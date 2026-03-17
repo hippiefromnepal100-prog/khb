@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Karuna 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0a0a0f;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Background glow */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, #ff4ecd33, transparent 60%);
+  animation: glow 8s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes glow {
+  from { transform: translate(-25%, -25%) scale(1); }
+  to { transform: translate(-20%, -20%) scale(1.2); }
+}
+
+/* Sections */
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title */
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(45deg, #ff4ecd, #7a5cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  max-width: 600px;
+  opacity: 0.85;
+}
+
+/* Button */
+button {
+  margin-top: 30px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff4ecd, #7a5cff);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  color: #ff4ecd;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Final message glow */
+.final {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  line-height: 1.5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sections -->
+<section class="active">
+  <h1>Hey Karuna 💖</h1>
+  <p>I made something just for you...  
+  Not just a message — but a little experience.</p>
+  <button onclick="next()">Start ✨</button>
+</section>
+
+<section>
+  <h1>Today is Special 🎂</h1>
+  <p>Because someone incredibly beautiful, kind, and unforgettable was born today.</p>
+  <button onclick="next()">Next</button>
+</section>
+
+<section>
+  <h1>And That Someone Is You 💕</h1>
+  <p>Karuna, you make ordinary moments feel magical without even trying.</p>
+  <button onclick="next()">Next</button>
+</section>
+
+<section>
+  <h1>A Small Confession 💭</h1>
+  <p>I don’t know when it happened... but you became someone I look forward to thinking about every day.</p>
+  <button onclick="next()">Next</button>
+</section>
+
+<section>
+  <h1>Your Smile 😊</h1>
+  <p>It’s the kind of smile that can fix a bad day... even from far away.</p>
+  <button onclick="next()">Next</button>
+</section>
+
+<section>
+  <h1>Your Presence ✨</h1>
+  <p>You don’t even realize how much light you bring into people's lives — especially mine.</p>
+  <button onclick="next()">Next</button>
+</section>
+
+<section>
+  <h1>On Your Birthday 🎉</h1>
+  <p>I just want you to feel how special you truly are — because you deserve nothing less.</p>
+  <button onclick="next()">Next</button>
+</section>
+
+<section>
+  <h1>And Maybe... 💌</h1>
+  <p>This little website is my way of saying... you mean more to me than I can easily put into words.</p>
+  <button onclick="next()">Final Message</button>
+</section>
+
+<section>
+  <h1 class="final">Happy Birthday, Karuna 💖<br><br>
+  You are truly one of a kind ✨</h1>
+  <p>And I’m really glad you exist.</p>
+</section>
+
+<script>
+let current = 0;
+const sections = document.querySelectorAll("section");
+
+function next() {
+  sections[current].classList.remove("active");
+  current++;
+  if (sections[current]) {
+    sections[current].classList.add("active");
+  }
+}
+
+/* Floating hearts generator */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (10 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+</script>
+
+</body>
+</html>
